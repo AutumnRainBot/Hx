@@ -45,7 +45,7 @@ local autopushup = false
 local autoclimb = false
 local autorun = false
 local speedhax = false
-
+local AutoPushUpGui = false
 
 --//Variables//--
 local speedvalue = 90
@@ -57,9 +57,6 @@ local AutoKo = false
 local AutoIn = false
 local AutoAura = false
 local AutoReset = false
-local AutoEat = false
-local AutoPushUpGui = false
-local autopushup = false
 
 
 
@@ -209,17 +206,6 @@ pcall(function()
             deb = false
         end
     end)
-
-
-    local deb4 = false
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if AutoPushUpGui and not deb4 then
-            deb4 = true
-            game:GetService("Players").LocalPlayer.Character.Character.input:FireServer("J", spawn)
-            wait(30)
-            deb4 = false
-        end
-    end)
     
     
     --//Run//--
@@ -238,6 +224,17 @@ pcall(function()
             game:GetService("Players").LocalPlayer.Character.Character.input:FireServer("ClimbEnd")
         end
     end)
+
+    local jij = false
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if AutoPushUpGui and not jij then
+            jij = true
+            game:GetService("Players").LocalPlayer.Character.Character.input:FireServer("J", spawn)
+            wait(30)
+            jij = false
+        end
+    end)
+
     --//SpeedHax//--
     game:GetService("RunService").RenderStepped:Connect(function()
         if speedhax and SpeedToggle then
@@ -281,13 +278,13 @@ pcall(function()
             game:GetService("Players").LocalPlayer.Character.Character.input:FireServer("N", spawn)
         end
     end)
-    local deb2 = false
+    local res = false
     game:GetService("RunService").RenderStepped:Connect(function()
-        if AutoReset and not deb2 then
-            deb2 = true
+        if AutoReset and not res then
+            res = true
             game:GetService("Players").LocalPlayer.Character:BreakJoints()
             wait(4)
-            deb2 = false
+            res = false
         end
     end)
 end)
