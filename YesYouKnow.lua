@@ -195,11 +195,15 @@ ParametersSection:AddBind({
 		SpeedToggle = not SpeedToggle
 	end    
 })
+local deb = false
+local deb4 = false
+local deb2 = false
+
+
 
 --//Loop//--
 pcall(function()
     --//PUSHUPS//--
-    local deb = false
     game:GetService("RunService").RenderStepped:Connect(function()
         if autopushup and not deb then
             deb = true
@@ -209,9 +213,8 @@ pcall(function()
         end
     end)
     
-    local deb4 = false
     game:GetService("RunService").RenderStepped:Connect(function()
-        if autopushup and not deb4 then
+        if AutoPushUpGui and not deb4 then
             deb4 = true
             game:GetService("Players").LocalPlayer.Character.Character.input:FireServer("J", spawn)
             wait(30)
@@ -279,7 +282,6 @@ pcall(function()
             game:GetService("Players").LocalPlayer.Character.Character.input:FireServer("N", spawn)
         end
     end)
-    local deb2 = false
     game:GetService("RunService").RenderStepped:Connect(function()
         if AutoReset and not deb2 then
             deb2 = true
