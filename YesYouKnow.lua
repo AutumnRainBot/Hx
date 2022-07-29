@@ -59,7 +59,6 @@ local AutoAura = false
 local AutoReset = false
 
 
-
 pushupssection:AddToggle({
     Name = "Auto Push-Ups",
     Default = false,
@@ -194,19 +193,15 @@ ParametersSection:AddBind({
 	end    
 })
 
+
 --//Loop//--
 pcall(function()
     --//PUSHUPS//--
-    local deb = false
     game:GetService("RunService").RenderStepped:Connect(function()
-        if autopushup and not deb then
-            deb = true
+        if autopushup then
             game:GetService("Players").LocalPlayer.PlayerGui.PushupsGui.Pushups.RemoteEvent:FireServer()
-            wait(2.5)
-            deb = false
         end
     end)
-    
     
     --//Run//--
     game:GetService("RunService").RenderStepped:Connect(function()
@@ -225,13 +220,9 @@ pcall(function()
         end
     end)
 
-    local jij = false
     game:GetService("RunService").RenderStepped:Connect(function()
-        if AutoPushUpGui and not jij then
-            jij = true
+        if AutoPushUpGui then
             game:GetService("Players").LocalPlayer.Character.Character.input:FireServer("J", spawn)
-            wait(30)
-            jij = false
         end
     end)
 
@@ -278,13 +269,9 @@ pcall(function()
             game:GetService("Players").LocalPlayer.Character.Character.input:FireServer("N", spawn)
         end
     end)
-    local res = false
     game:GetService("RunService").RenderStepped:Connect(function()
-        if AutoReset and not res then
-            res = true
+        if AutoReset then
             game:GetService("Players").LocalPlayer.Character:BreakJoints()
-            wait(4)
-            res = false
         end
     end)
 end)
